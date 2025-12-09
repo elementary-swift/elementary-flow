@@ -11,7 +11,7 @@ let package = Package(
         .plugin(name: "ElementaryCSSGenerator", targets: ["ElementaryCSSGenerator"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/sliemeobn/elementary", from: "0.5.2")
+        .package(url: "https://github.com/elementary-swift/elementary", from: "0.6.0")
     ],
     targets: [
         .target(

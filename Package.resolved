@@ -1,13 +1,13 @@
 {
-  "originHash" : "fdc23b8ff4daad3bc592449cdbb87ff7120eb9cbef2b6087f0d62e3fe4285748",
+  "originHash" : "31b984f0bf408e77974ff65631cfec91629244a9f6ab6dc674627813ca9c3259",
   "pins" : [
     {
       "identity" : "elementary",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sliemeobn/elementary",
+      "location" : "https://github.com/elementary-swift/elementary",
       "state" : {
-        "revision" : "5e6a7b5a5d5974e90f679ce4570e1dcfb011734d",
-        "version" : "0.5.2"
+        "revision" : "01aed0062a60d231240c7545d7044f1488c3c665",
+        "version" : "0.6.0"
       }
     }
   ],

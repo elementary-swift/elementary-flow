@@ -3,7 +3,7 @@ import ElementaryCSS
 
 struct DemoPage: HTML {
 
-    var content: some HTML {
+    var body: some HTML {
         let cards = [
             (title: "Card 1", description: "This is the first card."),
             (title: "Card 2", description: "This is the second card."),
@@ -32,7 +32,7 @@ struct Card: HTML {
     var title: String
     var description: String
 
-    var content: some HTML {
+    var body: some HTML {
         Block(
             .background(.background),
             .borderWidth(.px(3)),

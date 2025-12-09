@@ -1,6 +1,6 @@
 # ElementaryCSS: Swifty styling for the web
 
-**Define layouts and styles right in your [Elementary](https://github.com/sliemeobn/elementary) components**
+**Define layouts and styles right in your [Elementary](https://github.com/elementary-swift/elementary) components**
 
 🚧 Work In Progress 🚧
 
@@ -15,7 +15,7 @@ Motivation
 
 ```swift
 struct DemoPage: HTML {
-    var content: some HTML {
+    var body: some HTML {
         let cards = [
             (title: "Card 1", description: "This is the first card."),
             (title: "Card 2", description: "This is the second card."),
@@ -36,7 +36,7 @@ struct Card: HTML {
     var title: String
     var description: String
 
-    var content: some HTML {
+    var body: some HTML {
         Block(
             .background(.background),
             .borderWidth(.px(3)),
