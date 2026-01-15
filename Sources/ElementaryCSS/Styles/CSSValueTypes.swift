@@ -1,7 +1,4 @@
-// TODO: make this themable? - is this a good idea at all?
-private let defaultSizingUnitPx = 4
-
-public struct CSSLength: Sendable, RawRepresentable, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral,
+public struct CSSLength: Sendable, RawRepresentable, ExpressibleByIntegerLiteral,
     ExpressibleByStringInterpolation
 {
     public let rawValue: String
@@ -10,12 +7,8 @@ public struct CSSLength: Sendable, RawRepresentable, ExpressibleByFloatLiteral, 
         self.rawValue = rawValue
     }
 
-    public init(floatLiteral value: Double) {
-        self = .px(Int(value * Double(defaultSizingUnitPx)))
-    }
-
     public init(integerLiteral value: Int) {
-        self = .px(value * defaultSizingUnitPx)
+        self = .px(value)
     }
 
     public init(stringLiteral value: String) {
