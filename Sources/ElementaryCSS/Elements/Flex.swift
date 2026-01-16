@@ -7,7 +7,7 @@ import Elementary
 ///   - align: Vertical alignment of items.
 ///   - gap: Spacing between items.
 ///   - wrap: Whether items wrap to new lines.
-///   - inverse: If true, reverses the row direction.
+///   - reversed: If true, reverses the row direction.
 ///   - tag: The HTML tag to use.
 ///   - content: The container's content.
 @inlinable
@@ -16,12 +16,12 @@ public func FlexRow<Tag: HTMLTagDefinition, Wrapped: HTML>(
     align: CSSAlignItems? = nil,
     gap: CSSLength? = nil,
     wrap: CSSFlexWrap? = nil,
-    inverse: Bool? = nil,
+    reversed: Bool = false,
     tag: Tag.Type = HTMLTag.div.self,
     @HTMLBuilder content: () -> Wrapped
 ) -> HTMLElement<Tag, Wrapped> where Tag: HTMLTrait.Paired {
     let flow: CSSFlexFlow? =
-        if let inverse = inverse, inverse {
+        if reversed {
             .rowReverse(wrap)
         } else if let wrap = wrap {
             .row(wrap)
@@ -45,7 +45,7 @@ public func FlexRow<Tag: HTMLTagDefinition, Wrapped: HTML>(
 ///   - align: Horizontal alignment of items.
 ///   - gap: Spacing between items.
 ///   - wrap: Whether items wrap to new lines.
-///   - inverse: If true, reverses the column direction.
+///   - reversed: If true, reverses the column direction.
 ///   - tag: The HTML tag to use.
 ///   - content: The container's content.
 @inlinable
@@ -54,13 +54,13 @@ public func FlexColumn<Tag: HTMLTagDefinition, Wrapped: HTML>(
     align: CSSAlignItems? = nil,
     gap: CSSLength? = nil,
     wrap: CSSFlexWrap? = nil,
-    inverse: Bool? = nil,
+    reversed: Bool = false,
     tag: Tag.Type = HTMLTag.div.self,
     @HTMLBuilder content: () -> Wrapped
 ) -> HTMLElement<Tag, Wrapped> where Tag: HTMLTrait.Paired {
 
     let flow: CSSFlexFlow =
-        if let inverse = inverse, inverse {
+        if reversed {
             .columnReverse(wrap)
         } else {
             .column(wrap)

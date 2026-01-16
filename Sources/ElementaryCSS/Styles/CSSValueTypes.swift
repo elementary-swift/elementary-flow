@@ -197,6 +197,7 @@ public struct CSSAlignContent: Sendable, RawRepresentable {
     public static let center = Self(rawValue: "center")
     public static let spaceBetween = Self(rawValue: "space-between")
     public static let spaceAround = Self(rawValue: "space-around")
+    public static let spaceEvenly = Self(rawValue: "space-evenly")
     public static let stretch = Self(rawValue: "stretch")
 }
 
@@ -382,6 +383,13 @@ public struct CSSTransformOrigin: Sendable, RawRepresentable, ExpressibleByStrin
 
     public static let center = Self(rawValue: "center")
     public static let topLeft = Self(rawValue: "top left")
+    public static let topRight = Self(rawValue: "top right")
+    public static let bottomLeft = Self(rawValue: "bottom left")
+    public static let bottomRight = Self(rawValue: "bottom right")
+    public static let top = Self(rawValue: "top")
+    public static let right = Self(rawValue: "right")
+    public static let bottom = Self(rawValue: "bottom")
+    public static let left = Self(rawValue: "left")
 }
 
 /// CSS transform functions.
