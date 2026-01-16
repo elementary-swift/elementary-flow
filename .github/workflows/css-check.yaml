@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Generate CSS
-        run: ./scripts/generate-css.sh
+        run: ./Scripts/generate-css.sh
 
       - name: Check for uncommitted changes
         run: |
