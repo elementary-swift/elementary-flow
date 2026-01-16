@@ -1,3 +1,4 @@
+import CSSDefinitions
 import Elementary
 
 @inlinable
@@ -68,9 +69,7 @@ func createFlexElement<Tag: HTMLTagDefinition, Wrapped: HTML>(
     @HTMLBuilder wrapped: () -> Wrapped
 ) -> HTMLElement<Tag, Wrapped> where Tag: HTMLTrait.Paired {
 
-    var styles: [ElementaryStyle] = [
-        .display(.flex)
-    ]
+    var styles: [ElementaryStyle] = []
 
     if let flow = flow {
         styles.append(.flexFlow(flow))
@@ -85,5 +84,5 @@ func createFlexElement<Tag: HTMLTagDefinition, Wrapped: HTML>(
         styles.append(.gap(gap))
     }
 
-    return Tag.makeStyledElement(styles, content: wrapped)
+    return Tag.makeStyledElement(styles, elementClass: ElementaryCSSFlexClass, content: wrapped)
 }

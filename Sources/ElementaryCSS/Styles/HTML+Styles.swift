@@ -35,11 +35,12 @@ extension HTMLTagDefinition {
     @inlinable @inline(__always)
     internal static func makeStyledElement<Wrapped: HTML>(
         _ styles: [ElementaryStyle],
+        elementClass: String,
         @HTMLBuilder content: () -> Wrapped
     ) -> HTMLElement<Self, Wrapped>
     where Self: HTMLTrait.Paired {
         .init(
-            .class(styles.classNames()),
+            .class(styles.classNames(elementClass: elementClass)),
             .style(styles.styleValues()),
             content: content
         )
@@ -57,11 +58,14 @@ extension [ElementaryStyle] {
     }
 
     @usableFromInline
-    func classNames(condition: ElementaryStyle.Condition? = nil) -> [String] {
-        if let prefix = condition?.prefix {
-            [ElementaryCSSBaseClass] + self.map { style in style.property.className(prefix: prefix) }
-        } else {
-            [ElementaryCSSBaseClass]
+    func classNames(condition: ElementaryStyle.Condition? = nil, elementClass: String? = nil) -> [String] {
+        var classes = [ElementaryCSSBaseClass]
+        if let elementClass {
+            classes.append(elementClass)
         }
+        if let prefix = condition?.prefix {
+            classes += self.map { style in style.property.className(prefix: prefix) }
+        }
+        return classes
     }
 }

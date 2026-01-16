@@ -33,6 +33,11 @@ public struct ElementaryCSSStyleSheet {
         }
 
         css += "}\n"
+
+        // Element-specific base classes
+        css += ".\(ElementaryCSSFlexClass) { display: flex; }\n"
+        css += ".\(ElementaryCSSBlockClass) { display: block; }\n"
+        css += ".\(ElementaryCSSInlineClass) { display: inline; }\n"
     }
 
     private func generatePseudoClass(_ pseudoClass: CSSPseudoClass, _ css: inout String) {
