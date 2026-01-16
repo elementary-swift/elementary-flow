@@ -1,0 +1,6 @@
+version: 1
+builder:
+  configs:
+    - documentation_targets: [ElementaryCSS]
+      custom_documentation_parameters:
+        [--enable-experimental-overloaded-symbol-presentation]

@@ -1,6 +1,12 @@
-# ElementaryCSS: Swifty styling for the web
+<p align="center">
+  <a href="https://elementary.codes">
+    <img src="https://elementary-swift.github.io/assets/elementary-logo.svg" width="125px" alt="Elementary Logo">
+  </a>
+</p>
 
-**Define layouts and styles right in your [Elementary](https://github.com/elementary-swift/elementary) components**
+# ElementaryCSS - Type-safe CSS styling in Swift
+
+Define layouts and styles right in your [ElementaryUI](https://github.com/elementary-swift/elementary-ui) or [Elementary](https://github.com/elementary-swift/elementary) components — no external build tools or separate stylesheets required. ElementaryCSS provides a Swift-native API that stays true to CSS, with type-checked properties, conditional styles for hover and focus states, and seamless composition with other CSS frameworks.
 
 🚧 Work In Progress 🚧
 
@@ -22,8 +28,17 @@ struct DemoPage: HTML {
             (title: "Card 3", description: "This is the third card."),
         ]
 
-        Block(.maxWidth(200), .margin(x: .auto), .fontFamily(.monospace)) {
-            FlexColumn(gap: 3) {
+        Block(.maxWidth(800), .margin(x: .auto), .fontFamily(.monospace)) {
+            Heading(
+                .fontSize(24),
+                .fontWeight(.bold),
+                .color(.secondary),
+                .padding(y: 16)
+            ) {
+                "DEMO PAGE"
+            }
+
+            FlexColumn(gap: 12) {
                 for card in cards {
                     Card(title: card.title, description: card.description)
                 }
@@ -41,13 +56,13 @@ struct Card: HTML {
             .background(.background),
             .borderWidth(.px(3)),
             .borderRadius(5),
-            .padding(4)
+            .padding(16)
         ) {
-            Paragraph(.fontSize(12), .fontWeight(.bold), .color(.primary)) {
-                Text(title)
+            Paragraph(.fontSize(.em(1.5)), .fontWeight(.bold), .color(.primary)) {
+                title
             }
-            Paragraph(.fontSize(8)) {
-                Text(description, .color(.secondary))
+            Paragraph(.fontSize(.em(1.2)), .color(.secondary)) {
+                description
             }
         }.style(
             when: .hover,
@@ -59,12 +74,12 @@ struct Card: HTML {
 ```
 
 TODO:
-- [ ] Figure out what to do with "Block", "Paragraph" and so on, add Heading maybe? (hard-curated params, or just "_ styles"?)
-- [ ] Carefully think about other "primitives", like "Link" or "Button" (stay clean an unopinionated though)
+- [x] Figure out what to do with "Block", "Paragraph" and so on, add Heading maybe? (hard-curated params, or just "_ styles"?)
+- [x] Carefully think about other "primitives", like "Link" or "Button" (stay clean an unopinionated though) -> do not burn these yet
 - [ ] Add shadow, but probably introduce separate variables (a single "box-shadow" is a bit much, often you want separate control)
 - [ ] Media-queries for breakpoints
 - [ ] "Container" sizes? we want this? we can use CSS variables
-- [ ] Make sure the display is set on Block, Text, otherwise changing the tag would case layout differences (make add a few base classes in CSS)
+- [x] Make sure the display is set on Block, Text, otherwise changing the tag would case layout differences (make add a few base classes in CSS)
 - [ ] think about a theme system (ie: generated CSS can use variables, swift code can pass these variables)
 - [ ] think about colors in general (I'd rather not litter the space with a ton of colors, everybody wants their own...)
 - [ ] think about utilities on top like overlay, ZStack, and absolute positioning in general... currently that is very CSS-y

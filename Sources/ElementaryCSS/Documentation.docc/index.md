@@ -1,6 +1,12 @@
-import Elementary
-import ElementaryCSS
+# ``ElementaryCSS``
 
+Type-safe CSS styling in Swift
+
+## Overview
+
+Define layouts and styles right in your [ElementaryUI](https://github.com/elementary-swift/elementary-ui) or [Elementary](https://github.com/elementary-swift/elementary) components — no external build tools or separate stylesheets required. ElementaryCSS provides a Swift-native API that stays true to CSS, with type-checked properties, conditional styles for hover and focus states, and seamless composition with other CSS frameworks.
+
+```swift
 struct DemoPage: HTML {
     var body: some HTML {
         let cards = [
@@ -52,11 +58,4 @@ struct Card: HTML {
         )
     }
 }
-
-extension CSSColor {
-    static var primary: CSSColor { "#C2410C" }
-    static var secondary: CSSColor { "#854D0E" }
-    static var accent: CSSColor { "#EA580C" }
-    static var background: CSSColor { "#FFF7ED" }
-    static var hoverBackground: CSSColor { "#FFEDD5" }
-}
+```
