@@ -1,2 +1,3 @@
-swift package --allow-writing-to-package-directory generate-css --output dist/elementary.css
+mkdir -p dist
+cp ../../css/elementary.css dist/elementary.css
 swift run > dist/index.html
