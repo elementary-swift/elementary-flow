@@ -39,7 +39,6 @@ public struct ElementaryFlowStyleSheet {
         // Element-specific base classes
         css += ".\(ElementaryFlowFlexClass) { display: flex; }\n"
         css += ".\(ElementaryFlowBlockClass) { display: block; }\n"
-        css += ".\(ElementaryFlowInlineClass) { display: inline; }\n"
     }
 
     private func generatePseudoClass(_ pseudoClass: CSSPseudoClass, _ css: inout String) {

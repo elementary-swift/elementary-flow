@@ -81,7 +81,6 @@
 }
 ._ef { display: flex; }
 ._eb { display: block; }
-._ei { display: inline; }
 ._ehm:hover { margin:var(--eh-m)}
 ._ehp:hover { padding:var(--eh-p)}
 ._ehbg:hover { background:var(--eh-bg)}

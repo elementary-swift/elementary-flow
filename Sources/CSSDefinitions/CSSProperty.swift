@@ -20,7 +20,6 @@ package struct CSSProperty: Sendable {
 package let ElementaryFlowBaseClass = "_e"
 @usableFromInline package let ElementaryFlowFlexClass = "_ef"
 @usableFromInline package let ElementaryFlowBlockClass = "_eb"
-@usableFromInline package let ElementaryFlowInlineClass = "_ei"
 
 package extension CSSProperty {
     // Box Model

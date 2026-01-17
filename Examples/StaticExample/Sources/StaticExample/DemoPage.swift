@@ -9,15 +9,14 @@ struct DemoPage: HTML {
             (title: "Card 3", description: "This is the third card."),
         ]
 
-        Block(.maxWidth(800), .margin(x: .auto), .fontFamily(.monospace)) {
-            Heading(
-                .fontSize(24),
-                .fontWeight(.bold),
-                .color(.secondary),
-                .padding(y: 16)
-            ) {
-                "DEMO PAGE"
-            }
+        Block(maxWidth: 800) {
+            Heading("DEMO PAGE")
+                .style(
+                    .fontSize(24),
+                    .fontWeight(.bold),
+                    .color(.secondary),
+                    .padding(y: 16)
+                )
 
             FlexColumn(gap: 12) {
                 for card in cards {
@@ -25,6 +24,7 @@ struct DemoPage: HTML {
                 }
             }
         }
+        .style(.margin(x: .auto), .fontFamily(.monospace))
     }
 }
 
@@ -33,19 +33,19 @@ struct Card: HTML {
     var description: String
 
     var body: some HTML {
-        Block(
+        Block {
+            Paragraph(title)
+                .style(.fontSize(.em(1.5)), .fontWeight(.bold), .color(.primary))
+            Paragraph(description)
+                .style(.fontSize(.em(1.2)), .color(.secondary))
+        }
+        .style(
             .background(.background),
             .borderWidth(.px(3)),
             .borderRadius(5),
             .padding(16)
-        ) {
-            Paragraph(.fontSize(.em(1.5)), .fontWeight(.bold), .color(.primary)) {
-                title
-            }
-            Paragraph(.fontSize(.em(1.2)), .color(.secondary)) {
-                description
-            }
-        }.style(
+        )
+        .style(
             when: .hover,
             .background(.hoverBackground),
             .borderColor(.accent)
