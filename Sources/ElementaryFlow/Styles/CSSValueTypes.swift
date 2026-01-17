@@ -424,3 +424,39 @@ public struct CSSTransform: Sendable, RawRepresentable, ExpressibleByStringInter
         Self("scale(\(x),\(y))")
     }
 }
+
+/// CSS cursor style options.
+///
+/// For additional cursor values, use string literals: `.cursor("zoom-in")`.
+///
+/// See [MDN: cursor](https://developer.mozilla.org/docs/Web/CSS/cursor).
+public struct CSSCursor: Sendable, RawRepresentable, ExpressibleByStringInterpolation {
+    public let rawValue: String
+
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public init(stringLiteral value: String) {
+        self.rawValue = value
+    }
+
+    /// Default arrow cursor.
+    public static let `default` = Self(rawValue: "default")
+    /// Hand pointer for clickable elements.
+    public static let pointer = Self(rawValue: "pointer")
+    /// Text selection cursor.
+    public static let text = Self(rawValue: "text")
+    /// Move/drag cursor.
+    public static let move = Self(rawValue: "move")
+    /// Open hand for draggable elements.
+    public static let grab = Self(rawValue: "grab")
+    /// Closed hand while dragging.
+    public static let grabbing = Self(rawValue: "grabbing")
+    /// Indicates action is not allowed.
+    public static let notAllowed = Self(rawValue: "not-allowed")
+    /// Loading indicator (hourglass/spinner).
+    public static let wait = Self(rawValue: "wait")
+    /// Loading with interaction still possible.
+    public static let progress = Self(rawValue: "progress")
+}

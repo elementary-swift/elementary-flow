@@ -23,6 +23,7 @@
   --e-ov:initial;
   --e-pn:initial;
   --e-it:initial;
+  --e-z:initial;
   --e-c:initial;
   --e-ta:initial;
   --e-fw:initial;
@@ -39,6 +40,7 @@
   --e-tm:initial;
   --e-tmo:initial;
   --e-tn:initial;
+  --e-cur:initial;
   margin:var(--e-m, 0);
   padding:var(--e-p, 0);
   background:var(--e-bg, transparent);
@@ -62,6 +64,7 @@
   overflow:var(--e-ov, visible);
   position:var(--e-pn, );
   inset:var(--e-it, );
+  z-index:var(--e-z, );
   color:var(--e-c, inherit);
   text-align:var(--e-ta, inherit);
   font-weight:var(--e-fw, inherit);
@@ -78,6 +81,7 @@
   transform:var(--e-tm, none);
   transform-origin:var(--e-tmo, center);
   transition:var(--e-tn, none);
+  cursor:var(--e-cur, );
 }
 ._ef { display: flex; }
 ._eb { display: block; }
@@ -104,6 +108,7 @@
 ._ehov:hover { overflow:var(--eh-ov)}
 ._ehpn:hover { position:var(--eh-pn)}
 ._ehit:hover { inset:var(--eh-it)}
+._ehz:hover { z-index:var(--eh-z)}
 ._ehc:hover { color:var(--eh-c)}
 ._ehta:hover { text-align:var(--eh-ta)}
 ._ehfw:hover { font-weight:var(--eh-fw)}
@@ -120,6 +125,7 @@
 ._ehtm:hover { transform:var(--eh-tm)}
 ._ehtmo:hover { transform-origin:var(--eh-tmo)}
 ._ehtn:hover { transition:var(--eh-tn)}
+._ehcur:hover { cursor:var(--eh-cur)}
 
 ._efm:focus { margin:var(--ef-m)}
 ._efp:focus { padding:var(--ef-p)}
@@ -144,6 +150,7 @@
 ._efov:focus { overflow:var(--ef-ov)}
 ._efpn:focus { position:var(--ef-pn)}
 ._efit:focus { inset:var(--ef-it)}
+._efz:focus { z-index:var(--ef-z)}
 ._efc:focus { color:var(--ef-c)}
 ._efta:focus { text-align:var(--ef-ta)}
 ._effw:focus { font-weight:var(--ef-fw)}
@@ -160,6 +167,7 @@
 ._eftm:focus { transform:var(--ef-tm)}
 ._eftmo:focus { transform-origin:var(--ef-tmo)}
 ._eftn:focus { transition:var(--ef-tn)}
+._efcur:focus { cursor:var(--ef-cur)}
 
 ._eam:active { margin:var(--ea-m)}
 ._eap:active { padding:var(--ea-p)}
@@ -184,6 +192,7 @@
 ._eaov:active { overflow:var(--ea-ov)}
 ._eapn:active { position:var(--ea-pn)}
 ._eait:active { inset:var(--ea-it)}
+._eaz:active { z-index:var(--ea-z)}
 ._eac:active { color:var(--ea-c)}
 ._eata:active { text-align:var(--ea-ta)}
 ._eafw:active { font-weight:var(--ea-fw)}
@@ -200,6 +209,7 @@
 ._eatm:active { transform:var(--ea-tm)}
 ._eatmo:active { transform-origin:var(--ea-tmo)}
 ._eatn:active { transition:var(--ea-tn)}
+._eacur:active { cursor:var(--ea-cur)}
 
 ._edm:disabled { margin:var(--ed-m)}
 ._edp:disabled { padding:var(--ed-p)}
@@ -224,6 +234,7 @@
 ._edov:disabled { overflow:var(--ed-ov)}
 ._edpn:disabled { position:var(--ed-pn)}
 ._edit:disabled { inset:var(--ed-it)}
+._edz:disabled { z-index:var(--ed-z)}
 ._edc:disabled { color:var(--ed-c)}
 ._edta:disabled { text-align:var(--ed-ta)}
 ._edfw:disabled { font-weight:var(--ed-fw)}
@@ -240,5 +251,6 @@
 ._edtm:disabled { transform:var(--ed-tm)}
 ._edtmo:disabled { transform-origin:var(--ed-tmo)}
 ._edtn:disabled { transition:var(--ed-tn)}
+._edcur:disabled { cursor:var(--ed-cur)}
 
 

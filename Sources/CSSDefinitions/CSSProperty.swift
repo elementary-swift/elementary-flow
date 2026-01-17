@@ -54,6 +54,7 @@ package extension CSSProperty {
     // Positioning
     static let position = CSSProperty(name: "position", variable: "pn", defaultValue: "")
     static let inset = CSSProperty(name: "inset", variable: "it", defaultValue: "")
+    static let zIndex = CSSProperty(name: "z-index", variable: "z", defaultValue: "")
 
     // Typography
     static let color = CSSProperty(name: "color", variable: "c", defaultValue: "inherit")
@@ -74,6 +75,9 @@ package extension CSSProperty {
     static let transform = CSSProperty(name: "transform", variable: "tm", defaultValue: "none")
     static let transformOrigin = CSSProperty(name: "transform-origin", variable: "tmo", defaultValue: "center")
     static let transition = CSSProperty(name: "transition", variable: "tn", defaultValue: "none")
+
+    // Interactivity
+    static let cursor = CSSProperty(name: "cursor", variable: "cur", defaultValue: "")
 }
 
 package extension CSSProperty {
@@ -92,7 +96,7 @@ package extension CSSProperty {
             display, flexFlow, flex, justifyContent, alignItems, alignContent, gap, overflow,
 
             // Positioning
-            position, inset,
+            position, inset, zIndex,
 
             // Typography
             color, textAlign, fontWeight, fontSize, fontFamily,
@@ -101,6 +105,9 @@ package extension CSSProperty {
 
             // Effects
             opacity, transform, transformOrigin, transition,
+
+            // Interactivity
+            cursor,
         ]
     }
 }

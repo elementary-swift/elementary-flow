@@ -240,6 +240,12 @@ extension ElementaryStyle {
     public static func inset(y: CSSLength = .auto, x: CSSLength = .auto) -> Self {
         Self(property: .inset, value: "\(y.rawValue) \(x.rawValue)")
     }
+    /// Sets the z-index (stacking order).
+    ///
+    /// See [MDN: z-index](https://developer.mozilla.org/docs/Web/CSS/z-index).
+    public static func zIndex(_ value: Int) -> Self {
+        Self(property: .zIndex, value: "\(value)")
+    }
 
     // MARK: - Typography
 
@@ -345,5 +351,14 @@ extension ElementaryStyle {
     /// See [MDN: transition](https://developer.mozilla.org/docs/Web/CSS/transition).
     public static func transition(_ value: String) -> Self {
         Self(property: .transition, value: value)
+    }
+
+    // MARK: - Interactivity
+
+    /// Sets the cursor style.
+    ///
+    /// See [MDN: cursor](https://developer.mozilla.org/docs/Web/CSS/cursor).
+    public static func cursor(_ value: CSSCursor) -> Self {
+        Self(property: .cursor, value: value)
     }
 }

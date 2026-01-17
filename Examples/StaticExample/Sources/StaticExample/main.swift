@@ -5,7 +5,7 @@ struct Doc: HTMLDocument {
 
     var head: some HTML {
         meta(.charset(.utf8))
-        link(.rel(.stylesheet), .href("elementary.css"))
+        link(.rel(.stylesheet), .href("elementary-flow.css"))
     }
 
     var body: some HTML {

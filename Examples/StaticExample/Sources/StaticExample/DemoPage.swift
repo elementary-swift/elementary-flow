@@ -34,16 +34,18 @@ struct Card: HTML {
 
     var body: some HTML {
         Block {
-            Paragraph(title)
-                .style(.fontSize(.em(1.5)), .fontWeight(.bold), .color(.primary))
+            Heading(title)
+                .style(.fontSize(.em(1.5)), .fontWeight(.bold))
             Paragraph(description)
                 .style(.fontSize(.em(1.2)), .color(.secondary))
         }
         .style(
             .background(.background),
             .borderWidth(.px(3)),
-            .borderRadius(5),
-            .padding(16)
+            .borderRadius(20),
+            .padding(16),
+            .cursor(.grab),
+            .color(.primary)
         )
         .style(
             when: .hover,
