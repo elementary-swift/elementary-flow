@@ -1,6 +1,6 @@
 # ``ElementaryFlow``
 
-SwiftUI feel, CSS function.
+Layout and styling for Elementary - SwiftUI feel, CSS function.
 
 ## Overview
 

@@ -4,9 +4,9 @@
   </a>
 </p>
 
-# ElementaryFlow
+# ElementaryFlow — Layout and styling in Swift
 
-**SwiftUI feel, CSS function.**
+***SwiftUI feel, CSS function.***
 
 Define layouts and styles right in your [ElementaryUI](https://github.com/elementary-swift/elementary-ui) or [Elementary](https://github.com/elementary-swift/elementary) components — no external build tools or separate stylesheets required. ElementaryFlow provides a Swift-native API that stays true to CSS, with type-checked properties, conditional styles for hover and focus states, and seamless composition with other CSS frameworks.
 
