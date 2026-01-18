@@ -13,7 +13,11 @@ public struct CSSLength: Sendable, RawRepresentable, ExpressibleByIntegerLiteral
     }
 
     public init(integerLiteral value: Int) {
-        self = .px(value)
+        if value == 0 {
+            self = "0"
+        } else {
+            self = .px(value)
+        }
     }
 
     public init(stringLiteral value: String) {
@@ -56,6 +60,11 @@ public struct CSSColor: Sendable, RawRepresentable, ExpressibleByStringInterpola
     public static let transparent = Self("transparent")
     public static let black = Self("black")
     public static let white = Self("white")
+
+    /// Creates a black color with the specified opacity.
+    public static func black(_ opacity: Double) -> Self { "rgba(0,0,0,\(opacity))" }
+    /// Creates a white color with the specified opacity.
+    public static func white(_ opacity: Double) -> Self { "rgba(255,255,255,\(opacity))" }
 }
 
 /// CSS text alignment options.
@@ -423,6 +432,149 @@ public struct CSSTransform: Sendable, RawRepresentable, ExpressibleByStringInter
     public static func scale(_ x: Double, _ y: Double) -> Self {
         Self("scale(\(x),\(y))")
     }
+}
+
+/// CSS box-shadow value.
+///
+/// Combine multiple shadows by passing them to `.boxShadow(...)`.
+///
+/// See [MDN: box-shadow](https://developer.mozilla.org/docs/Web/CSS/box-shadow).
+public struct CSSBoxShadow: Sendable, RawRepresentable, ExpressibleByStringInterpolation {
+    public let rawValue: String
+
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public init(stringLiteral value: String) {
+        self.rawValue = value
+    }
+
+    /// Creates a drop shadow with black color and specified opacity.
+    ///
+    /// - Parameters:
+    ///   - x: Horizontal offset.
+    ///   - y: Vertical offset.
+    ///   - blur: Blur radius.
+    ///   - spread: Spread radius.
+    ///   - opacity: Shadow opacity (0.0 to 1.0). Defaults to 0.1.
+    public static func shadow(
+        x: CSSLength = 0,
+        y: CSSLength,
+        blur: CSSLength,
+        spread: CSSLength = 0,
+        opacity: Double = 0.1
+    ) -> Self {
+        Self("\(x.rawValue) \(y.rawValue) \(blur.rawValue) \(spread.rawValue) \(CSSColor.black(opacity).rawValue)")
+    }
+
+    /// Creates a drop shadow with a custom color.
+    ///
+    /// - Parameters:
+    ///   - x: Horizontal offset.
+    ///   - y: Vertical offset.
+    ///   - blur: Blur radius.
+    ///   - spread: Spread radius.
+    ///   - color: Shadow color.
+    public static func shadow(
+        x: CSSLength = 0,
+        y: CSSLength,
+        blur: CSSLength,
+        spread: CSSLength = 0,
+        color: CSSColor
+    ) -> Self {
+        Self("\(x.rawValue) \(y.rawValue) \(blur.rawValue) \(spread.rawValue) \(color.rawValue)")
+    }
+
+    /// Creates an inset shadow with black color and specified opacity.
+    ///
+    /// - Parameters:
+    ///   - x: Horizontal offset.
+    ///   - y: Vertical offset.
+    ///   - blur: Blur radius.
+    ///   - spread: Spread radius.
+    ///   - opacity: Shadow opacity (0.0 to 1.0). Defaults to 0.1.
+    public static func inset(
+        x: CSSLength = 0,
+        y: CSSLength,
+        blur: CSSLength,
+        spread: CSSLength = 0,
+        opacity: Double = 0.1
+    ) -> Self {
+        Self("inset \(x.rawValue) \(y.rawValue) \(blur.rawValue) \(spread.rawValue) rgba(0,0,0,\(opacity))")
+    }
+
+    /// Creates an inset shadow with a custom color.
+    ///
+    /// - Parameters:
+    ///   - x: Horizontal offset.
+    ///   - y: Vertical offset.
+    ///   - blur: Blur radius.
+    ///   - spread: Spread radius.
+    ///   - color: Shadow color.
+    public static func inset(
+        x: CSSLength = 0,
+        y: CSSLength,
+        blur: CSSLength,
+        spread: CSSLength = 0,
+        color: CSSColor
+    ) -> Self {
+        Self("inset \(x.rawValue) \(y.rawValue) \(blur.rawValue) \(spread.rawValue) \(color.rawValue)")
+    }
+
+    /// Creates a ring (solid outline using zero-blur shadow).
+    ///
+    /// - Parameters:
+    ///   - width: Ring width.
+    ///   - color: Ring color.
+    public static func ring(_ width: CSSLength, color: CSSColor) -> Self {
+        Self("0 0 0 \(width.rawValue) \(color.rawValue)")
+    }
+
+    /// Creates an inset ring (solid inner border using zero-blur shadow).
+    ///
+    /// - Parameters:
+    ///   - width: Ring width.
+    ///   - color: Ring color.
+    public static func insetRing(_ width: CSSLength, color: CSSColor) -> Self {
+        Self("inset 0 0 0 \(width.rawValue) \(color.rawValue)")
+    }
+
+    /// Combines multiple shadows into a single value.
+    ///
+    /// ```swift
+    /// .boxShadow(.combined(.shadow(y: 4, blur: 8), .ring(3, color: .blue)))
+    /// ```
+    public static func combined(_ first: CSSBoxShadow, _ rest: CSSBoxShadow...) -> Self {
+        combined(first, rest)
+    }
+
+    /// Combines multiple shadows into a single value (array version).
+    public static func combined(_ first: CSSBoxShadow, _ rest: [CSSBoxShadow]) -> Self {
+        if rest.isEmpty {
+            return first
+        }
+        return Self(rawValue: first.rawValue + "," + rest.map(\.rawValue).joined(separator: ","))
+    }
+}
+
+/// CSS outline line style.
+public struct CSSOutlineStyle: Sendable, RawRepresentable {
+    public let rawValue: String
+
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public static let none = Self(rawValue: "none")
+    public static let solid = Self(rawValue: "solid")
+    public static let dashed = Self(rawValue: "dashed")
+    public static let dotted = Self(rawValue: "dotted")
+    public static let double = Self(rawValue: "double")
+    public static let groove = Self(rawValue: "groove")
+    public static let ridge = Self(rawValue: "ridge")
+    public static let inset = Self(rawValue: "inset")
+    public static let outset = Self(rawValue: "outset")
 }
 
 /// CSS cursor style options.

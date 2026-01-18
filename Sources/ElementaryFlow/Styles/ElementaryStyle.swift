@@ -128,6 +128,16 @@ extension ElementaryStyle {
         Self(property: .borderWidth, value: "\(y.rawValue) \(x.rawValue)")
     }
 
+    /// Sets the outline with width, style, and color.
+    ///
+    /// See [MDN: outline](https://developer.mozilla.org/docs/Web/CSS/outline).
+    public static func outline(_ width: CSSLength, style: CSSOutlineStyle = .solid, color: CSSColor? = nil) -> Self {
+        if let color = color {
+            return Self(property: .outline, value: "\(width.rawValue) \(style.rawValue) \(color.rawValue)")
+        }
+        return Self(property: .outline, value: "\(width.rawValue) \(style.rawValue)")
+    }
+
     // MARK: - Sizing
 
     /// Sets the element height.
@@ -351,6 +361,21 @@ extension ElementaryStyle {
     /// See [MDN: transition](https://developer.mozilla.org/docs/Web/CSS/transition).
     public static func transition(_ value: String) -> Self {
         Self(property: .transition, value: value)
+    }
+    /// Sets the box shadow. Multiple shadows can be combined.
+    ///
+    /// ```swift
+    /// .boxShadow(.shadow(y: 4, blur: 8, color: .rgba(0,0,0,0.1)))
+    /// .boxShadow(.ring(2, color: .blue))
+    /// .boxShadow(.shadow(y: 4, blur: 8, color: .rgba(0,0,0,0.1)), .ring(2, color: .blue))
+    /// ```
+    ///
+    /// See [MDN: box-shadow](https://developer.mozilla.org/docs/Web/CSS/box-shadow).
+    public static func boxShadow(_ shadow: CSSBoxShadow, _ additional: CSSBoxShadow...) -> Self {
+        if additional.isEmpty {
+            return Self(property: .boxShadow, value: shadow.rawValue)
+        }
+        return Self(property: .boxShadow, value: CSSBoxShadow.combined(shadow, additional).rawValue)
     }
 
     // MARK: - Interactivity

@@ -38,14 +38,38 @@ struct Card: HTML {
                 .style(.fontSize(.em(1.5)), .fontWeight(.bold))
             Paragraph(description)
                 .style(.fontSize(.em(1.2)), .color(.secondary))
+            input(.type(.text))
+                .style(
+                    .borderWidth(2),
+                    .borderRadius(4),
+                    .padding(y: 2),
+                )
+                .style(
+                    when: .focus,
+                    .outline(2, color: "green")
+                )
+            button {
+                "Hello"
+            }.style(
+                .outline(2, color: "green"),
+                .borderRadius(4),
+                .padding(y: 2, x: 4),
+                .minWidth(100),
+                .textAlign(.center)
+            )
+            .style(when: .hover, .color("pink"))
+            .style(when: .active, .transform(.scale(0.9, 0.9)))
         }
         .style(
             .background(.background),
             .borderWidth(.px(3)),
             .borderRadius(20),
             .padding(16),
-            .cursor(.grab),
-            .color(.primary)
+            .color(.primary),
+            .boxShadow(
+                .shadow(y: 12, blur: 8, spread: -1),
+                .shadow(y: 4, blur: 2)
+            )
         )
         .style(
             when: .hover,
