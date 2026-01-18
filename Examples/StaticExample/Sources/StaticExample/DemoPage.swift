@@ -42,7 +42,7 @@ struct Card: HTML {
                 .style(
                     .borderWidth(2),
                     .borderRadius(4),
-                    .padding(y: 2),
+                    .padding(y: 2)
                 )
                 .style(
                     when: .focus,

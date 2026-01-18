@@ -554,7 +554,7 @@ public struct CSSBoxShadow: Sendable, RawRepresentable, ExpressibleByStringInter
         if rest.isEmpty {
             return first
         }
-        return Self(rawValue: first.rawValue + "," + rest.map(\.rawValue).joined(separator: ","))
+        return Self(rawValue: first.rawValue + "," + rest.map { $0.rawValue }.joined(separator: ","))
     }
 }
 
