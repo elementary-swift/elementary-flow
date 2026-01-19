@@ -8,18 +8,7 @@
 
 ***SwiftUI feel, CSS function.***
 
-Define layouts and styles right in your [ElementaryUI](https://github.com/elementary-swift/elementary-ui) or [Elementary](https://github.com/elementary-swift/elementary) components — no external build tools or separate stylesheets required. ElementaryFlow provides a Swift-native API that stays true to CSS, with type-checked properties, conditional styles for hover and focus states, and seamless composition with other CSS frameworks.
-
-🚧 Work In Progress 🚧
-
-Motivation
-+ provide in-code styling without external build steps or separate CSS style sheets
-+ thread the needle between a SwiftUI feel, but a CSS function
-+ do not commit to a design system or look
-+ works well for server and client use cases (ie: try to save bytes on the wire, and in the binary...)
-+ stay extensible and flexible (ie: no fixed overload, no enums, allow raw CSS everywhere)
-+ stay composable: should work in combination with other CSS solutions (tailwind, bootstrap, ...)
-+ try to cover most needs without have the base-css file explode
+Define layouts and styles right in your [ElementaryUI](https://github.com/elementary-swift/elementary-ui) or [Elementary](https://github.com/elementary-swift/elementary) components — no external build tools or separate stylesheets required. ElementaryFlow provides a Swift-native API that maps efficiently to CSS, with type-checked properties, conditional styles for hover and focus states, and seamless composition with other CSS frameworks.
 
 ```swift
 struct DemoPage: HTML {
@@ -75,10 +64,30 @@ struct Card: HTML {
 }
 ```
 
+## How to use it
+
+The package contains a single, static CSS file that must be loaded for ElementaryFlow to work: [css/elementary-flow.css](css/elementary-flow.css).
+
+Make sure to bundle this file as part of your web project build.
+
+*More docs and guide coming soon...*
+
+## 🚧 Work In Progress 🚧
+
+Motivation
++ provide in-code styling without external build steps or separate CSS style sheets
++ thread the needle between a SwiftUI feel, but a CSS function
++ do not commit to a design system or look
++ works well for server and client use cases (ie: try to save bytes on the wire, and in the binary...)
++ stay extensible and flexible (ie: no fixed overload, no enums, allow raw CSS everywhere)
++ stay composable: should work in combination with other CSS solutions (tailwind, bootstrap, ...)
++ try to cover most needs without have the base-css file explode
+
+
 TODO:
 - [x] Figure out what to do with "Block", "Paragraph" and so on, add Heading maybe? (hard-curated params, or just "_ styles"?)
 - [x] Carefully think about other "primitives", like "Link" or "Button" (stay clean an unopinionated though) -> do not burn these yet
-- [ ] Add shadow, but probably introduce separate variables (a single "box-shadow" is a bit much, often you want separate control)
+- [x] Add shadow, but probably introduce separate variables (a single "box-shadow" is a bit much, often you want separate control)
 - [ ] Media-queries for breakpoints
 - [ ] "Container" sizes? we want this? we can use CSS variables
 - [x] Make sure the display is set on Block, Text, otherwise changing the tag would case layout differences (make add a few base classes in CSS)
