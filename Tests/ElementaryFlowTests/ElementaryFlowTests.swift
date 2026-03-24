@@ -3,25 +3,10 @@ import Testing
 
 @testable import ElementaryFlow
 
-private struct TestDocument<Content: HTML>: HTMLDocument {
-    typealias Tag = Never
-    let element: Content
-
-    var title: String { "Test" }
-    var head: some HTML {}
-    var body: some HTML { element }
-}
-
-private func render<Content: HTML>(_ content: Content) -> String {
-    TestDocument(element: content).render()
-}
-
 @Test func blockAppliesBlockClassAndSizeStyles() {
-    let html = render(
-        Block(width: 100, maxWidth: 800) {
-            Paragraph("Body")
-        }
-    )
+    let html = Block(width: 100, maxWidth: 800) {
+        Paragraph("Body")
+    }.render()
 
     #expect(html.contains("_eb"))
     #expect(html.contains("--e-w"))
@@ -31,16 +16,14 @@ private func render<Content: HTML>(_ content: Content) -> String {
 }
 
 @Test func flexRowAppliesFlowAlignmentAndGap() {
-    let html = render(
-        FlexRow(
-            justify: .spaceBetween,
-            align: .center,
-            gap: .px(12),
-            wrap: .wrap
-        ) {
-            Paragraph("A")
-        }
-    )
+    let html = FlexRow(
+        justify: .spaceBetween,
+        align: .center,
+        gap: .px(12),
+        wrap: .wrap
+    ) {
+        Paragraph("A")
+    }.render()
 
     #expect(html.contains("_ef"))
     #expect(html.contains("--e-fl"))
@@ -54,10 +37,9 @@ private func render<Content: HTML>(_ content: Content) -> String {
 }
 
 @Test func styleWhenHoverUsesConditionalClassAndVariables() {
-    let html = render(
-        Paragraph("Hover me")
-            .style(when: .hover, .background("pink"), .color("red"))
-    )
+    let html = Paragraph("Hover me")
+        .style(when: .hover, .background("pink"), .color("red"))
+        .render()
 
     #expect(html.contains("_ehbg"))
     #expect(html.contains("_ehc"))
@@ -68,12 +50,10 @@ private func render<Content: HTML>(_ content: Content) -> String {
 }
 
 @Test func headingAndParagraphRenderExpectedTags() {
-    let html = render(
-        Block {
-            Heading("Title", tag: HTMLTag.h2.self)
-            Paragraph("Description")
-        }
-    )
+    let html = Block {
+        Heading("Title", tag: HTMLTag.h2.self)
+        Paragraph("Description")
+    }.render()
 
     #expect(html.contains("<h2>Title</h2>"))
     #expect(html.contains("<p>Description</p>"))
