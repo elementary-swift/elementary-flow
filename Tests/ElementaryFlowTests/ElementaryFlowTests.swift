@@ -1,5 +1,5 @@
-import Testing
 import Elementary
+import Testing
 
 @testable import ElementaryFlow
 
