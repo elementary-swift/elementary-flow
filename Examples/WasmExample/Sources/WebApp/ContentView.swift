@@ -37,7 +37,7 @@ struct TitleView {
                 )
 
             Paragraph {
-                "This is an demo of "
+                "This is a demo of "
                 Link(text: "ElementaryFlow", url: "https://github.com/elementary-swift/elementary-flow")
                 "."
             }.style(.fontSize(.em(1)))
