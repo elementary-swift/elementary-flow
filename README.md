@@ -72,7 +72,10 @@ Check out a simple demo app [here](https://elementary-swift.github.io/elementary
 
 The package contains a single, static CSS file that must be loaded for ElementaryFlow to work: [css/elementary-flow.css](css/elementary-flow.css).
 
-Make sure to bundle this file as part of your web project build.
+Make sure to bundle this file as part of your web project build. If you're using [ElementaryUI](https://github.com/elementary-swift/elementary-ui),
+1. Create an `"ElementaryFlow"` alias in `vite.config.ts` resolving to the provided css/elementary-flow.css ([like so](https://github.com/elementary-swift/elementary-ui/blob/main/Examples/Swiftle/vite.config.ts#L8)).
+2. Create a CSS file for your web app that contains the line `@import "ElementaryFlow";`.
+3. Add a stylesheet `<link>` to your CSS file in `index.html`.
 
 *More docs and guides coming soon...*
 
