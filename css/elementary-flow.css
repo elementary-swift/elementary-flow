@@ -43,6 +43,7 @@
   --e-tn:initial;
   --e-sh:initial;
   --e-bf:initial;
+  --e-bf:initial;
   --e-cur:initial;
   margin:var(--e-m, 0);
   padding:var(--e-p, 0);
@@ -87,6 +88,7 @@
   transition:var(--e-tn, none);
   box-shadow:var(--e-sh, none);
   backdrop-filter:var(--e-bf, none);
+  -webkit-backdrop-filter:var(--e-bf, none);
   cursor:var(--e-cur, );
 }
 ._ef { display: flex; }
@@ -134,6 +136,7 @@
 ._ehtn:hover { transition:var(--eh-tn)}
 ._ehsh:hover { box-shadow:var(--eh-sh)}
 ._ehbf:hover { backdrop-filter:var(--eh-bf)}
+._ehbf:hover { -webkit-backdrop-filter:var(--eh-bf)}
 ._ehcur:hover { cursor:var(--eh-cur)}
 
 ._efm:focus { margin:var(--ef-m)}
@@ -179,6 +182,7 @@
 ._eftn:focus { transition:var(--ef-tn)}
 ._efsh:focus { box-shadow:var(--ef-sh)}
 ._efbf:focus { backdrop-filter:var(--ef-bf)}
+._efbf:focus { -webkit-backdrop-filter:var(--ef-bf)}
 ._efcur:focus { cursor:var(--ef-cur)}
 
 ._eam:active { margin:var(--ea-m)}
@@ -224,6 +228,7 @@
 ._eatn:active { transition:var(--ea-tn)}
 ._eash:active { box-shadow:var(--ea-sh)}
 ._eabf:active { backdrop-filter:var(--ea-bf)}
+._eabf:active { -webkit-backdrop-filter:var(--ea-bf)}
 ._eacur:active { cursor:var(--ea-cur)}
 
 ._edm:disabled { margin:var(--ed-m)}
@@ -269,6 +274,7 @@
 ._edtn:disabled { transition:var(--ed-tn)}
 ._edsh:disabled { box-shadow:var(--ed-sh)}
 ._edbf:disabled { backdrop-filter:var(--ed-bf)}
+._edbf:disabled { -webkit-backdrop-filter:var(--ed-bf)}
 ._edcur:disabled { cursor:var(--ed-cur)}
 
 

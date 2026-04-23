@@ -78,6 +78,7 @@ package extension CSSProperty {
     static let transition = CSSProperty(name: "transition", variable: "tn", defaultValue: "none")
     static let boxShadow = CSSProperty(name: "box-shadow", variable: "sh", defaultValue: "none")
     static let backdropFilter = CSSProperty(name: "backdrop-filter", variable: "bf", defaultValue: "none")
+    static let webkitBackdropFilter = CSSProperty(name: "-webkit-backdrop-filter", variable: "bf", defaultValue: "none")
 
     // Interactivity
     static let cursor = CSSProperty(name: "cursor", variable: "cur", defaultValue: "")
@@ -107,7 +108,7 @@ package extension CSSProperty {
             whiteSpace, textOverflow, textShadow,
 
             // Effects
-            opacity, transform, transformOrigin, transition, boxShadow, backdropFilter,
+            opacity, transform, transformOrigin, transition, boxShadow, backdropFilter, webkitBackdropFilter,
 
             // Interactivity
             cursor,
