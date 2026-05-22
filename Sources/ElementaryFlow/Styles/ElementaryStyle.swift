@@ -377,6 +377,21 @@ extension ElementaryStyle {
         }
         return Self(property: .boxShadow, value: CSSBoxShadow.combined(shadow, additional).rawValue)
     }
+    /// Sets the backdrop filter. Multiple filters can be combined.
+    ///
+    /// ```swift
+    /// .backdropFilter(.blur(radius: 10))
+    /// .backdropFilter(.brightness(value: 1.2))
+    /// .backdropFilter(.blur(radius: 10), .brightness(value: 1.2))
+    /// ```
+    ///
+    /// See [MDN: backdrop-filter](https://developer.mozilla.org/docs/Web/CSS/backdrop-filter).
+    public static func backdropFilter(_ filter: CSSBackdropFilter, _ additional: CSSBackdropFilter...) -> Self {
+        if additional.isEmpty {
+            return Self(property: .backdropFilter, value: filter.rawValue)
+        }
+        return Self(property: .backdropFilter, value: CSSBackdropFilter.combined(filter, additional).rawValue)
+    }
 
     // MARK: - Interactivity
 

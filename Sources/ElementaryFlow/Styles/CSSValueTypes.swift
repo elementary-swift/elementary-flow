@@ -558,6 +558,96 @@ public struct CSSBoxShadow: Sendable, RawRepresentable, ExpressibleByStringInter
     }
 }
 
+
+/// CSS backdrop-filter value.
+///
+/// Combine multiple filters by passing them to `.backdropFilter(...)`.
+///
+/// See [MDN: backdrop-filter](https://developer.mozilla.org/docs/Web/CSS/backdrop-filter).
+public struct CSSBackdropFilter: Sendable, RawRepresentable, ExpressibleByStringInterpolation {
+    public let rawValue: String
+
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public init(stringLiteral value: String) {
+        self.rawValue = value
+    }
+
+    /// Creates a blur filter with the specified radius.
+    public static func blur(_ radius: CSSLength) -> Self {
+        Self("blur(\(radius.rawValue))")
+    }
+
+    /// Creates a brightness filter with the specified percentage.
+    public static func brightness(_ percentage: Double) -> Self {
+        Self("brightness(\(percentage)%)")
+    }
+
+    /// Creates a contrast filter with the specified percentage.
+    public static func contrast(_ percentage: Double) -> Self {
+        Self("contrast(\(percentage)%)")
+    }
+
+    /// Creates a drop shadow filter with the specified parameters.
+    public static func dropShadow(
+        x: CSSLength = 0,
+        y: CSSLength,
+        blur: CSSLength,
+        spread: CSSLength = 0,
+        color: CSSColor = .black(0.1)
+    ) -> Self {
+        Self("drop-shadow(\(x.rawValue) \(y.rawValue) \(blur.rawValue) \(spread.rawValue) \(color.rawValue))")
+    }
+
+    /// Creates a grayscale filter with the specified percentage.
+    public static func grayscale(_ percentage: Double) -> Self {
+        Self("grayscale(\(percentage)%)")
+    }
+
+    /// Creates a hue-rotate filter with the specified degrees.
+    public static func hueRotate(_ degrees: Double) -> Self {
+        Self("hue-rotate(\(degrees)deg)")
+    }
+
+    /// Creates an invert filter with the specified percentage.
+    public static func invert(_ percentage: Double) -> Self {
+        Self("invert(\(percentage)%)")
+    }
+
+    /// Creates an opacity filter with the specified percentage.
+    public static func opacity(_ percentage: Double) -> Self {
+        Self("opacity(\(percentage)%)")
+    }
+
+    /// Creates a sepia filter with the specified percentage.
+    public static func sepia(_ percentage: Double) -> Self {
+        Self("sepia(\(percentage)%)")
+    }
+
+    /// Creates a saturation filter with the specified percentage.
+    public static func saturate(_ percentage: Double) -> Self {
+        Self("saturate(\(percentage)%)")
+    }
+
+    /// Combines multiple filters into a single value.
+    /// ```swift
+    /// .backdropFilter(.combined(.blur(.px(5)), .brightness(150)))
+    /// ```
+    public static func combined(_ first: CSSBackdropFilter, _ rest: CSSBackdropFilter...) -> Self {
+        combined(first, rest)   
+    }
+
+    /// Combines multiple filters into a single value (array version).
+    public static func combined(_ first: CSSBackdropFilter, _ rest: [CSSBackdropFilter]) -> Self {
+        if rest.isEmpty {
+            return first   
+        }
+        return Self(rawValue: first.rawValue + " " + rest.map { $0.rawValue }.joined(separator: " "))
+    }
+}
+
 /// CSS outline line style.
 public struct CSSOutlineStyle: Sendable, RawRepresentable {
     public let rawValue: String
